@@ -1,0 +1,44 @@
+<!-- PHOTO PAGE -->
+<ons-page ng-controller="photosController">
+	<ons-toolbar fixed-style>
+	<div class="left">
+		<span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+			<i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+			Back
+		</span></span>
+	</span>
+	</div>
+	<div class="center">
+		Hình Ảnh Công Trình
+	</div>
+	</ons-toolbar>
+	<ons-page>
+	<div ng-show="!photos.length" style=" padding: 10px; ">Không có hình ảnh</div>
+	<ons-list ng-repeat="data in photos">
+
+		<ons-list-item modifier="chevron" id= "{{data.FileName}}"class="photos-list-item-container" onclick="openImage(this.id)">
+			<ons-row>
+				<ons-col width="95px">
+					<img src="{{data.IncludeModel}}" class="photos-thumbnail">
+				</ons-col>
+				<ons-col>
+					<div class="photos-name">
+						{{data.ReferenceNo}}
+					</div>
+					<div class="photos-location"><i class="fa fa-map-marker"></i>HCM, Vietnam</div>
+					<div class="photos-desc">
+						Tên file: {{data.OriginalFileName}}
+					</div>
+				</ons-col>
+				<ons-col width="40px">
+				</ons-col>
+			</ons-row>
+		</ons-list-item>
+
+	</ons-list>
+
+	</ons-page>
+</ons-page>
+
+<!-- END PHOTO PAGE -->
+

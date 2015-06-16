@@ -1,0 +1,227 @@
+    <style>
+    body {
+        overflow-x: hidden;
+    }
+    </style>
+    <!-- DETAIL PROJECT PAGE -->
+    <ons-page ng-controller="detailProjectController" id="detailProjectController" >
+      <ons-toolbar fixed-style>
+        <div class="left">
+          <ons-back-button ng-click="loadListProject()">Back</ons-back-button>
+        </div>
+        <div class="center" >{{detailFeedbackProject.ProjectName}}</div>
+        <div class="right">
+          <ons-toolbar-button>
+            <ons-icon icon="ion-gear-a" style="font-size: 32px; width: 1em" ng-click="projectManagement(detailFeedbackProject.CustomerId)"/>
+          </ons-toolbar-button>
+        </div>
+
+      </ons-toolbar>
+
+      <ons-page style="background: url('img/bg/{{dataUserSetting.bg}}'); background-attachment: fixed;">
+        <ons-bottom-toolbar fixed-style style="z-index: 0;height: 60px;">
+
+          <div class="center">
+            <form>
+            <span style="height: 26px;text-align: center;width: 10%;position: absolute;top: -4px;left: 0px;">
+              <ons-icon icon="ion-camera" style="margin-top: 8px;color:#43d854" ng-click="uploadphoto()"/>
+            </span>
+            <span style="height: 26px;text-align: center;width: 10%;top: 32px;position: absolute;left: -5px;">
+              <ons-icon icon="ion-happy" style="font-size: 18px; width: 1em;height: 26px;text-align: center;width: 10%;color:#43d854" onclick="showEmoticon()"/>
+            </span>
+
+              <textarea id="messagebox" rows="1" cols="1" ng-model="message.data" class="text-input"
+              style="height:26px;width: 78%; margin: 6px 0px 0px 0px;font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;  font-size: 13px;"
+              placeholder="Gửi phản hồi">
+            </textarea>
+            
+ <span style="height: 26px;text-align: center;line-height: 0px;width: 8%;position: absolute;top: 4px;right: 16px;">
+     <ons-icon icon="ion-checkmark-round" style="height: 26px;text-align: center;width: 8%;color:#43d854" data-ng-click="pushMessage(message)"/>
+ </span>
+<!--            <button class="button"-->
+<!--            style="height: 29px;text-align: center;width: 17%;margin: 6px 0px 0px 0px; background-color:#43d854;font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;  font-size: 14px;"-->
+<!--            data-ng-click="pushMessage(message)">-->
+<!--            Gửi-->
+<!--          </button>-->
+
+<style type="text/css">
+textarea{  
+   
+   overflow-y:auto;
+  
+ 
+ 
+  max-height:50px;
+}
+</style>
+<script type="text/javascript">
+var textarea = document.querySelector('#messagebox');
+
+
+textarea.addEventListener('keydown', autosize);
+
+function autosize(){
+  
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:29px; width: 78%; margin: 6px 0px 0px 0px;font-family: \'Helvetica Neue\', Helvetica, Arial, \'Lucida Grande\', sans-serif;  font-size: 13px;';
+    // for box-sizing other than "content-box" use:
+    // el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight + 'px;width: 78%; margin: 6px 0px 0px 0px;font-family: \'Helvetica Neue\', Helvetica, Arial, \'Lucida Grande\', sans-serif;  font-size: 13px;';
+  },0);
+}
+
+</script>
+
+
+
+        </form>
+
+      </div>
+    </ons-bottom-toolbar>
+
+                <ons-list class="timeline" modifier="inset" style="background: url('img/bg/{{dataUserSetting.bg}}');border:0px;background-repeat: no-repeat;background-attachment: fixed;">
+
+                      <div class="container" ng-repeat="feedback in listFeedBack" id="baobao">
+
+                        <div class="bubble {{feedback.side}}" style="width:85%" >
+                          <div style=" font-size: 15px; color: rgb(255, 105, 105); margin-bottom: 5px; ">{{feedback.Username}}</div>
+                          <pre  class="feedbackContent" ng-show="{{feedback.Type != 'Photo'}}" ng-bind-html="feedback.Content" style=" margin-top: -3px; margin-bottom: 0px; "></pre>
+                          <span ng-show="{{feedback.Type == 'Photo'}}">
+                            <img id= "{{feedback.Content}}" style="width: 100%; height: auto;"  src="{{feedback.Content}}" onclick="openImage(this.id)" >
+                          </span>
+
+                          <div style=" font-size: 10px; color: #9E9C9C; margin-top: 5px; float: right; ">{{feedback.FeedbackDate}}</div>
+                        </div>
+                        <div class="{{feedback.time_side}}">
+                            <img src="{{feedback.picture}}" onerror="imgError(this);" class="timeline-image" style=" border-radius: 13px; "/>
+                        </div>
+                      </div>
+
+                </ons-list>
+
+                <div style="padding: 10px 9px" id="loadmorebutton">
+                  <ons-button modifier="large" style="margin: 0 auto;"  data-ng-click="loadMore()" style="font-size: 10px;">
+                    Xem thêm...
+                  </ons-button>
+                </div>
+                <span id="nofeedback" style="display:none;padding:20px;">Không còn feedback :-(</span>
+                <br/>
+               
+
+
+
+    <!--
+    <ons-list-item class="timeline-li" modifier="tappable" ng-repeat="feedback in listFeedBack">
+    <ons-row>
+    <ons-col width="50px">
+    <img ng-src="{{feedback.picture}}" class="timeline-image" src=""/>
+    </ons-col>
+
+    <ons-col>
+    <div class="timeline-date" id="feedbackTime">
+    {{feedback.feedbackdate}}
+    </div>
+    <div class="timline-from">
+    <span class="timeline-name">
+    <b>
+    {{feedback.username}}
+    </b>
+    </span>
+    </div>
+
+    <div class="timeline-message" ng-switch="feedback.type" >
+    <p class="item-desc-detail-project ng-binding" ng-switch-when="" >
+    <pre  class="feedbackContent" ng-show="{{feedback.type != 'Photo'}}" ng-bind-html="feedback.content">
+
+    </pre>
+
+    <img id= "{{feedback.content}}" style="width: 100%; height: auto;" ng-show="{{feedback.type == 'Photo'}}" src="{{feedback.content}}" onclick="openImage(this.id)" >
+    </p>
+
+    </div>
+
+    </ons-col>
+    </ons-row>
+    </ons-list-item>
+    </ons-list>
+    -->
+
+
+
+    </ons-page>
+
+    </ons-page>
+
+    <style>
+    .dialog{
+      overflow:scroll;
+      height:300px;
+      bottom:10%!important;
+      -webkit-overflow-scrolling: touch;
+
+    }
+    </style>
+    <ons-dialog var="emotion_dialog" cancelable>
+      <ons-carousel fullscreen swipeable overscrollable auto-scroll>
+        <ons-carousel-item>
+          <br>
+          <div style="line-height: 55px">
+            <img onclick="addEmoticon('(uhuhuh)')" src="http://emoticoner.com/files/emoticons/onion-head/uhuhuh-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(admire)')" src="http://emoticoner.com/files/emoticons/onion-head/admire2-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(crying)')" src="http://emoticoner.com/files/emoticons/onion-head/crying1-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(confused)')" src="http://emoticoner.com/files/emoticons/onion-head/confused-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(goodjob)')" src="http://emoticoner.com/files/emoticons/onion-head/good-job-onion-head-emoticon.gif" style="width:50px">
+          </div>
+          <div style="line-height: 55px">
+            <img onclick="addEmoticon('(evilsmile)')" src="http://emoticoner.com/files/emoticons/onion-head/evil-smile-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(freezing)')" src="http://emoticoner.com/files/emoticons/onion-head/freezing-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(hate)')" src="http://emoticoner.com/files/emoticons/onion-head/hate-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(full)')" src="http://emoticoner.com/files/emoticons/onion-head/full-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(hell)')" src="http://emoticoner.com/files/emoticons/onion-head/hell-yes-onion-head-emoticon.gif" style="width:50px">
+          </div>
+          <div style="line-height: 55px">
+            <img onclick="addEmoticon('(cute1)')" src="http://emoticoner.com/files/emoticons/onion-head/cute1-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(cute2)')" src="http://emoticoner.com/files/emoticons/onion-head/cute2-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(dead)')" src="http://emoticoner.com/files/emoticons/onion-head/dead-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(depressed)')" src="http://emoticoner.com/files/emoticons/onion-head/depressed2-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(desperate)')" src="http://emoticoner.com/files/emoticons/onion-head/desperate1-onion-head-emoticon.gif" style="width:50px">
+          </div>
+          <div style="line-height: 55px">
+            <img onclick="addEmoticon('(lonely)')" src="http://emoticoner.com/files/emoticons/onion-head/lonely-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(lie)')" src="http://emoticoner.com/files/emoticons/onion-head/lie-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(stress)')" src="http://emoticoner.com/files/emoticons/onion-head/stress-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(lol)')" src="http://emoticoner.com/files/emoticons/onion-head/lol2-onion-head-emoticon.gif" style="width:50px">
+            <img onclick="addEmoticon('(supper)')" src="http://emoticoner.com/files/emoticons/onion-head/super-onion-head-emoticon.gif" style="width:50px">
+          </div>
+        </ons-carousel-item>
+        <ons-carousel-item>
+         <br>
+                <div style="line-height: 55px">
+                  <img onclick="addEmoticon('(wait)')" src="http://emoticoner.com/files/emoticons/onion-head/wait-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(punch)')" src="http://emoticoner.com/files/emoticons/onion-head/punch-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(love)')" src="http://emoticoner.com/files/emoticons/onion-head/love-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(shock)')" src="http://emoticoner.com/files/emoticons/onion-head/shock2-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(sweating)')" src="http://emoticoner.com/files/emoticons/onion-head/sweating-onion-head-emoticon.gif" style="width:50px">
+                </div>
+
+                <div style="line-height: 55px">
+                  <img onclick="addEmoticon('(whistling)')" src="http://emoticoner.com/files/emoticons/onion-head/whistling-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(work)')" src="http://emoticoner.com/files/emoticons/onion-head/work-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(woa)')" src="http://emoticoner.com/files/emoticons/onion-head/woa-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(kick)')" src="http://emoticoner.com/files/emoticons/onion-head/kick-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(hot)')" src="http://emoticoner.com/files/emoticons/onion-head/hot1-onion-head-emoticon.gif" style="width:50px">
+                </div>
+                <div style="line-height: 55px">
+                  <img onclick="addEmoticon('(nonono)')" src="http://emoticoner.com/files/emoticons/onion-head/nonono-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(ill)')" src="http://emoticoner.com/files/emoticons/onion-head/ill-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(objection)')" src="http://emoticoner.com/files/emoticons/onion-head/objection-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(shy)')" src="http://emoticoner.com/files/emoticons/onion-head/shy-onion-head-emoticon.gif" style="width:50px">
+                  <img onclick="addEmoticon('(smoke)')" src="http://emoticoner.com/files/emoticons/onion-head/smoking1-onion-head-emoticon.gif" style="width:50px">
+                </div>
+        </ons-carousel-item>
+      </ons-carousel>
+    </ons-dialog>
+
+
+    <!-- END DETAIL PROJECT PAGE -->

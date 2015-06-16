@@ -1,0 +1,75 @@
+
+
+
+                <!-- SETTING PAGE -->
+
+
+                <ons-page ng-controller="settingUserController" id="settingUserController">
+                  <ons-toolbar fixed-style >
+
+                    <div class="center">
+                      Thiết lập
+                    </div>
+
+                  </ons-toolbar>
+
+                  <ons-page>
+                         <div class="profile-settings-card">
+
+                                 <div style="position: relative;">
+                            <img id="imgProfile" src="{{dataUserSetting.avatar}}" class="profile-settings-image">
+                                 <div data-ng-click="changeProfilePhoto()" style="width: 20%;height:20px;background-color: red;bottom:10px;left:40%;background-color:black;opacity:0.5;-webkit-border-radius:1em;-moz-border-radius:1em;font-size:11px; color:white;text-align:center;position:absolute">
+                                     Chỉnh sửa
+                                     </div>
+			
+	                        	</div>
+                             
+                        
+                        <div class="profile-settings-name">{{dataUserSetting.username}}</div>
+                        <div class="profile-settings-id">{{dataUserSetting.email}}</div>
+                       </div>
+     
+
+                    <ons-list modifier="inset" class="settings-list">
+                    <ons-list-item modifier="chevron"  data-ng-click="gotoAbout()">
+                    <span style="margin-left:10px" >Giới thiệu<span>
+                    </ons-list-item>  
+                 <ons-list-item modifier="chevron" ng-click="gotoPolicy()">
+
+                      <span style="margin-left:10px">Góp ý và Báo lỗi<span>
+                   </ons-list-item>
+                        <ons-list-item modifier="chevron"  data-ng-click="gotoBackground()">
+                    <span style="margin-left:10px" >Chọn ảnh nền<span>
+                    </ons-list-item>   
+                          
+                          
+                      <ons-list-item
+                      modifier="tappable" ng-click="logoutUser()">
+                      <ons-icon icon="ion-log-out" style="opacity: 0.8">
+                      </ons-icon>
+                      <span style="color:red">Đăng xuất<span>
+                    </ons-list-item>
+                          
+                          
+                    </ons-list>
+
+                    
+                      <div style="width: 100%;text-align: center;">
+                      <div style="margin: 20px 0 0 0;font-weight: 600;font-size: 15px;">Version 2.1.1</div>
+                        <div style="margin: 0 0 5px 0;font-size: 14px;opacity: 0.6;">@2015 Tarch.com.vn Pte. Ltd.</div>
+                      </div>
+                             <br/>
+
+                    <!-- <div class="settings-header" style=" text-decoration: underline; font-weight: bold;; ">Background project detail</div>
+                    <br/> -->
+
+     
+
+
+
+
+                </ons-page>
+
+
+                </ons-page>
+  

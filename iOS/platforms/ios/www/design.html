@@ -1,0 +1,61 @@
+<ons-page ng-controller="projectManagementController" data-ng-init="initDesign()" >
+  <ons-toolbar fixed-style>
+  <div class="left">
+    <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+      <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+      Back
+    </span></span>
+  </span>
+  </div>
+  <div class="center">
+   Thiết kế
+  </div>  
+     <div class="right" ng-hide="assigned[1] == null || (userId!= 1&& userId!=298)" ng-click="addDesign()"><ons-toolbar-button>Sửa</ons-toolbar-button></div>
+  </ons-toolbar>
+
+   <ons-row class="profile-wrapper" ng-hide="assigned[1] == null">
+      <ons-col width="60px" class="profile-image-wrapper">
+        <img src="{{assigned[1].avatar}}" class="profile-image">
+      </ons-col>
+
+      <ons-col>
+        <div class="profile-name">Phụ trách: {{assigned[1].Username}}</div>
+        <div class="profile-email">{{assigned[1].Phone}}</div>
+      </ons-col>
+   </ons-row>
+    
+    <!--    neu CHUA CO Thiet Ke-->
+
+        <ons-row class="profile-wrapper" ng-hide="assigned[1] != null || (userId!= 1&& userId!=298)">
+      <ons-col>
+       <ons-button class="custom-color" modifier="large" style="margin: 20px auto;" ng-click="addDesign()">
+          Thêm mới Thiết kế
+        </ons-button>
+      </ons-col>
+
+   </ons-row>
+  
+  <ons-list class="plan-list">
+    <ons-list-item class="plan" ng-repeat="design in designsData">
+      <ons-row>
+         <ons-col width="2px" class="plan-left">
+            
+          </ons-col>
+
+        <ons-col width="6px" class="plan-center" ng-style="{backgroundColor:design.timeline == 1 ? '#1d89cf' : '#ccc'}">
+        </ons-col>
+
+        <ons-col class="plan-right">
+          <div class="plan-name">{{design.headline}}</div>
+          <div class="plan-info">
+              <div>{{design.SDate | date: 'dd/MM/yyyy'}}</div>
+              <div>{{design.text}}</div>
+          </div>
+        </ons-col>
+      </ons-row>
+    </ons-list-item>
+  </ons-list>
+
+</ons-page>
+
+

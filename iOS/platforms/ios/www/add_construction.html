@@ -1,0 +1,41 @@
+<ons-page ng-controller="projectManagementController" data-ng-init="initEditConstruct()">
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+      <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+      Back
+    </span></span>
+            </span>
+        </div>
+        <div class="center">
+            Quản lý Thi công
+        </div>
+        <div class="right" ng-click="updateConstruct()">
+            <ons-toolbar-button>Lưu</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list>
+
+        <ons-list-header>Nhân viên quản lý</ons-list-header>
+        <ons-list-item modifier="tappable" ng-repeat="construct in constructUsers">
+            <label class="radio-button radio-button--list-item">
+                <input type="radio" name="a" ng-checked="construct.Role === 1" ng-click="mainChecked(construct)">
+                <div class="radio-button__checkmark radio-button--list-item__checkmark"></div>
+                {{construct.UserName}}
+            </label>
+        </ons-list-item>
+
+        <ons-list-header>Nhân viên tham gia</ons-list-header>
+
+        <ons-list-item modifier="tappable" ng-repeat="construct in constructUsers">
+            <label class="checkbox checkbox--list-item">
+                <input class="checkbox-user" type="checkbox" ng-checked="construct.Role === 2" ng-click="assignChecked(construct)">
+                <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+                {{construct.UserName}}
+            </label>
+        </ons-list-item>
+
+    </ons-list>
+
+</ons-page>

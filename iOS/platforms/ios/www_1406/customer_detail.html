@@ -1,0 +1,73 @@
+    <ons-page ng-controller="customerDetail">
+      <ons-toolbar fixed-style>
+      <div class="left">
+        <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+          <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+          Back
+        </span></span>
+      </span>
+      </div>
+      <div class="center">
+        {{customerInfo.ProjectName}}  
+      </div>   
+      </ons-toolbar>
+
+          <ons-page>
+                             <div class="profile-settings-card">
+                                 <div style="position: relative;">
+                            <img id="imgProject" src="{{customerPhoto}}" onerror="imgProjectError(this);" class="profile-settings-image" >
+                                 <div data-ng-click="changePhoto()" style="width: 20%;height:20px;background-color: red;bottom:10px;left:40%;background-color:black;opacity:0.5;-webkit-border-radius:1em;-moz-border-radius:1em;font-size:11px; color:white;text-align:center;position:absolute">
+                                     Chỉnh sửa
+                                     </div>
+			
+	                        	</div>
+                                 </div>     
+            <div style=" margin-left: 12px; ">Thông tin liên lạc</div>
+            <ons-list style="margin-top: 12px;">
+              <ons-list-item>
+                <div class="prop-desc">
+                  <ons-icon icon="ion-person"></ons-icon>
+                 {{customerInfo.Reference}}  
+                </div>
+              </ons-list-item>
+
+              <ons-list-item>
+                <div class="prop-desc">
+                  <ons-icon icon="fa-mobile"></ons-icon>
+                 {{customerInfo.CustomerPhone}}  
+                </div>
+              </ons-list-item>
+
+               <ons-list-item>
+                <div class="prop-desc">
+                  <ons-icon icon="ion-email"></ons-icon>
+                 {{customerInfo.email}}  
+                </div>
+              </ons-list-item>        
+            </ons-list>
+
+            <br/>
+
+            <div style=" margin-left: 12px; ">Thông tin dự án</div>
+             <ons-list style="margin-top: 12px;">
+                <ons-list-item>
+                <div class="prop-desc">              
+                  Diện tích:  <b>{{customerInfo.Dientich}} m<sup>2</sup></b>
+                </div>
+              </ons-list-item>
+
+              <ons-list-item>
+                <div class="prop-desc">              
+                 Ngày tiến hành: <b>{{customerInfo.ImplementDate | date: "dd-MM-yyyy"}}  </b>
+                </div>
+              </ons-list-item>
+
+              <ons-list-item>
+                <div class="prop-desc">
+                  Giá trị dự kiến: <b>{{customerInfo.EstimateAmount | number}} VND  </b>
+                </div>
+              </ons-list-item>
+
+            </ons-list>
+        </ons-page>
+    </ons-page>

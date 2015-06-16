@@ -1,0 +1,41 @@
+<ons-page ng-controller="projectManagementController" data-ng-init="initAssign()">
+  <ons-toolbar fixed-style>
+  <div class="left">
+    <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+      <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+      Back
+    </span></span>
+  </span>
+  </div>
+  <div class="center">
+     Nhân viên tham gia dự án
+     ({{employeesData.length}})
+  </div>   
+  </ons-toolbar>
+  
+  <ons-list class="plan-list">
+
+    <ons-list class="person-list" ng-repeat="employee in employeesData">
+     <ons-list-item  class="list-item-container" modifier="chevron" ng-click="feedBackEmployee(employee)">
+
+      <ons-row>
+        <div class="list-item-left">
+          <img src="{{employee.avatar}}" style=" margin-top: 10px; " class="avator" onerror="imgError(this);">
+        </div>
+        <div class="list-item-right">
+          <div class="list-item-content">
+            <span class="name">{{employee.Username}}</span><br/>
+            <span class="lucent"> <ons-icon icon="fa-phone"></ons-icon>  {{employee.Phone}}</span><br/>
+            <span class="desc">{{employee.Email}}</span>
+            <br/>
+            
+            <span class="lucent" style=" font-size: 12px; "> {{employee.name}}</span>
+          </div>
+         </div>
+        </ons-row>
+      </ons-list-item>
+   </ons-list>
+
+  </ons-list>
+
+</ons-page>

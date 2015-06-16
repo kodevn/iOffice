@@ -1,0 +1,75 @@
+<ons-page ng-controller="projectManagementController">
+  <ons-toolbar fixed-style>
+  <div class="left">
+    <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+      <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+      Back
+    </span></span>
+  </span>
+  </div>
+  <div class="center">
+    Quản lý Bảo trì 
+  </div>   
+  </ons-toolbar>
+
+    <ons-list>
+
+         <ons-list-header>Nhân viên quản lý</ons-list-header>
+
+        <ons-list-item modifier="tappable">
+          <label class="radio-button radio-button--list-item">
+            <input type="radio" name="a" checked="checked">
+            <div class="radio-button__checkmark radio-button--list-item__checkmark"></div>
+            Chrome
+          </label>
+        </ons-list-item>
+
+        <ons-list-item modifier="tappable">
+          <label class="radio-button radio-button--list-item">
+            <input type="radio" name="a">
+            <div class="radio-button__checkmark radio-button--list-item__checkmark"></div>
+            Safari
+          </label>
+        </ons-list-item>
+
+        
+        
+        
+        <ons-list-header>Nhân viên tham gia</ons-list-header>
+
+        <ons-list-item modifier="tappable">
+          <label class="checkbox checkbox--list-item">
+            <input type="checkbox">
+            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+            Baseball
+          </label>
+        </ons-list-item>
+
+        <ons-list-item modifier="tappable">
+          <label class="checkbox checkbox--list-item">
+            <input type="checkbox">
+            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+            Soccer
+          </label>
+        </ons-list-item>
+
+        <ons-list-item modifier="tappable">
+          <label class="checkbox checkbox--list-item">
+            <input type="checkbox" checked="checked">
+            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+            Basketball
+          </label>
+        </ons-list-item>
+
+        <ons-list-item modifier="tappable">
+          <label class="checkbox checkbox--list-item">
+            <input type="checkbox" checked="checked">
+            <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+            Golf
+          </label>
+        </ons-list-item>
+    </ons-list>
+ <ons-button class="custom-color" modifier="large" style="margin: 20px auto;" ng-click="">
+          Cập nhật
+        </ons-button>
+</ons-page>

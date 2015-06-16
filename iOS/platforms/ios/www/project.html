@@ -1,0 +1,133 @@
+
+
+        <script>
+        function showSearchBox(){
+        $("#searchBox").css("display","block");
+        $("#segment").css("display","none");
+        $("#searchButton").css("display","none");
+        $("#closeButton").css("display","block");
+        }
+        function hideSearchBox(){
+        $("#searchBox").css("display","none");
+        $("#segment").css("display","block");
+        $("#searchButton").css("display","block");
+        $("#closeButton").css("display","none");
+        }
+        </script>
+        <ons-template id="project.html">
+          <div id="idlistProjectController" ng-controller="listProjectController">
+            <ons-page>
+              <ons-toolbar fixed-style>
+
+                <!-- <div class="center" style="width:80%">
+                  <input type="search" class="search-input"
+                  style="width: 96%; margin: 6px auto 6px auto;"
+                  placeholder="Tìm kiếm" ng-model="searchText">
+
+                </div>
+                <div class="left" style="width:15%" >
+                  <ons-toolbar-button>
+                    <ons-icon icon="refresh" fixed-width="false"
+                    style="font-size: 26px; vertical-align: -4px;"
+                    data-ng-click="reloadPage()">
+                  </ons-icon>
+                </ons-toolbar-button>
+              </div> -->
+                <div class="center" style="align:center;width:70%;">
+                 <input id="searchBox" type="search" class="search-input"
+                  style="width: 96%; margin: 6px auto 6px auto;display:none"
+                  placeholder="Tìm kiếm" ng-model="searchText">
+                  <div id="segment" style="display:block">
+                    <!-- segment control -->
+            <div class="button-bar" style="width:200px;height:36px; margin:8px auto 0;">
+              <div class="button-bar__item">
+                <input type="radio" name="navi-segment-a" checked data-ng-click="reloadPage()">
+                <div class="button-bar__button">Đang chạy</div>
+              </div>
+              <div class="button-bar__item">
+                <input type="radio" name="navi-segment-a" data-ng-click="getallProject()">
+                <div class="button-bar__button">Tất cả</div>
+              </div>
+            </div>
+        </div>
+                </div>
+                <div class="left" style="width:15%" >
+                  <ons-toolbar-button>
+                    <ons-icon icon="refresh" fixed-width="false"
+                    style="font-size: 26px; vertical-align: -4px;"
+                    data-ng-click="reloadPage()">
+                  </ons-icon>
+                </ons-toolbar-button>
+              </div>
+
+              <div class="right"  style="width:15%">
+                <ons-toolbar-button id="searchButton" style="display:block">
+                  <ons-icon icon="ion-search" fixed-width="false"
+                  style="font-size: 26px; vertical-align: -4px;"
+                  onclick="showSearchBox()"></ons-icon>
+
+                </ons-icon>
+              </ons-toolbar-button>
+              <ons-toolbar-button id="closeButton" style="display:none">
+                <ons-icon icon="ion-close" fixed-width="false"
+                style="font-size: 26px; vertical-align: -4px;"
+                onclick="hideSearchBox()">
+              </ons-icon>
+            </ons-toolbar-button>
+            </div>
+
+            </ons-toolbar>
+
+
+            <ons-page>
+
+              <!-- <ons-toolbar fixed-style>
+
+                <div class="center" style="width:100%">
+                  <input type="search" class="search-input"
+                  style="width: 96%; margin: 6px auto 6px auto;"
+                  placeholder="Tìm kiếm" ng-model="searchText">
+                </div>
+
+              </ons-toolbar> -->
+
+              <ons-list class="person-list" ng-repeat="data in projects | filter:searchText">
+                <ons-list-item data-ng-click="detailProject(data)" class="person-item" id="project_{{data.CustomerId}}">
+                <ons-row>
+                     <ons-col width="50px">
+                  <img src="{{photoServer}}{{data.CustomerId}}.jpg" onerror="imgProjectError(this);" class="person-image" >
+                  </ons-col>
+                  <ons-col>
+                    <header>
+                      <span class="item-title">
+                        <b>
+                          {{data.ProjectName}}
+                        </b>
+                        <b ng-show="{{data.count >
+                          0}}" class="circle notification">
+                          {{data.count}}
+                        </b>
+
+                      </span>
+                    </header>
+                    <p class="item-desc">
+                      {{ data.FeedBack | limitTo: 150 }}{{data.FeedBack.length >
+                        150 ?
+                        '...' : ''}}
+                      </p>
+                    </ons-col>
+                  </ons-row>
+                </ons-list-item>
+              </ons-list>
+
+            </ons-page>
+
+          </ons-page>
+        </div>
+
+        </ons-template>
+        <script>
+        function scrolling(){
+          console.log("fucking scrolling");
+        }
+        </script>

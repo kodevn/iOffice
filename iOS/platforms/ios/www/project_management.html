@@ -1,0 +1,44 @@
+        <!-- PHOTO PAGE -->
+        <ons-page ng-controller="projectManagementController">
+            <ons-toolbar fixed-style>
+            <div class="left">
+                <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+                    <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+                    Back
+                </span></span>
+            </span>
+            </div>
+            <div class="center">
+                {{detailFeedbackProject.ProjectName}}
+            </div>
+            </ons-toolbar>
+
+            <ons-page>
+              <ons-list modifier="inset" class="settings-list">
+                <ons-list-item  ng-click="customerdetail()">Thông tin dự án</ons-list-item>
+                <ons-list-item  ng-click="listphotos(detailFeedbackProject.CustomerId)">Hình ảnh</ons-list-item>
+                <ons-list-item  ng-click="order()">Đặt hàng
+                      <b ng-hide="assigned[3] == null" class="circle right-detail">{{assigned[3].Username}}</b>
+                  <b ng-hide="assigned[3] != null" class="circle right-detail">chưa phân công</b>
+                  </ons-list-item>
+                <ons-list-item  ng-click="sales()">Sales 
+                    <b ng-hide="assigned[0] == null" class="circle right-detail">{{assigned[0].Username}}</b>
+                    <b ng-hide="assigned[0] != null" class="circle right-detail">chưa phân công</b>
+                  </ons-list-item>
+                <ons-list-item  ng-click="design()">Thiết kế
+                    <b ng-hide="assigned[1] == null" class="circle right-detail">{{assigned[1].Username}}</b>
+                  <b ng-hide="assigned[1] != null" class="circle right-detail">chưa phân công</b>
+                  </ons-list-item>
+                <ons-list-item  ng-click="construct()">Thi công
+                    <b ng-hide="assigned[2] == null" class="circle right-detail">{{assigned[2].Username}}</b>
+                  <b ng-hide="assigned[2] != null" class="circle right-detail">chưa phân công</b>
+                  </ons-list-item>
+                <ons-list-item  ng-click="maintain()">Bảo trì</ons-list-item>
+                <ons-list-item  ng-click="employees()">Nhân viên tham gia dự án</ons-list-item>
+
+              </ons-list>
+            </ons-page>
+
+        </ons-page>
+
+        <!-- END PHOTO PAGE -->

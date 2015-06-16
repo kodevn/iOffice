@@ -1,0 +1,86 @@
+
+.tab {
+  line-height: 1;
+}
+
+.tab-icon {
+  font-size: 22px;
+  padding: 0;
+  margin: 0;
+}
+
+.tab-label {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.person-list {
+  border-top: none;
+}
+
+.person {
+  line-height: 1;
+}
+
+.person-list-header {
+  opacity: 0.6;
+}
+
+.person-name {
+  line-height: 44px;
+}
+
+.person-image {
+  width: 40px;
+  height: 40px;
+  margin-top: 15px;
+  border-radius: 2px;
+}
+
+
+.person-item{
+    line-height: 45px;
+/*
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
+  border-top: 0.5px solid #ddd;
+  border-bottom: 0.5px solid #ddd;
+*/
+}
+.profile-settings-card {
+  width: 100%;
+  text-align: center;
+/*  color: white;*/
+  padding: 10px 0;
+  line-height: 1.4;
+/*  background-color: #33393c;*/
+/*  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;*/
+}
+
+.profile-settings-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+
+}
+
+.profile-settings-name {
+  margin: 20px 0 0 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.profile-settings-id {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
+.profile-settings-desc {
+  font-size: 15px;
+  opacity: 0.6;
+  width: 90%;
+  text-align: center;
+  margin: 0 auto;
+}

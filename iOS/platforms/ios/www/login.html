@@ -1,0 +1,22 @@
+<!-- LOGIN PAGE -->
+<ons-page ng-controller="loginController">
+    <ons-toolbar fixed-style>
+        <div class="center">Login</div>
+    </ons-toolbar>
+    <div style="text-align: center">
+        <br>
+        <div class="login-form">
+            <form name="userForm" novalidate>
+                <input type="email" class="text-input--underbar" ng-model="user.email" placeholder="Email" value="" />
+                <br/>
+
+                <input type="password" class="text-input--underbar" ng-model="user.password" placeholder="Password" value="" />
+
+                <br/><br/>
+                <ons-button modifier="large" class="login-button" ng-click="login(user)" style="height: 40px;line-height: 30px;font-size: 20;background-color:#43d854">Login</ons-button>
+            </form>
+        </div>
+    </div>
+</ons-page>
+<script>
+</script>

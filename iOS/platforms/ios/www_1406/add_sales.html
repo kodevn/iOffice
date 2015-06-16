@@ -1,0 +1,27 @@
+<ons-page ng-controller="projectManagementController" data-ng-init="initEditSales()">
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">
+            Quản lý Sales
+        </div>
+        <div class="right" ng-click="updateSales()">
+            <ons-toolbar-button>Lưu</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list>
+
+        <ons-list-header>Nhân viên phụ trách</ons-list-header>
+        <ons-list-item modifier="tappable" ng-repeat="sales in salesUsers">
+            <label class="radio-button radio-button--list-item">
+                <input type="radio" name="a" ng-checked="sales.Role === 1" ng-click="mainChecked(sales)">
+                <div class="radio-button__checkmark radio-button--list-item__checkmark"></div>
+                {{sales.UserName}}
+            </label>
+        </ons-list-item>
+
+       
+
+</ons-page>

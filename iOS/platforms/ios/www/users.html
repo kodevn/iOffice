@@ -1,0 +1,90 @@
+<script>
+function showSearchBox(){
+$("#searchBox").css("display","block");
+$("#segment").css("display","none");
+$("#searchButton").css("display","none");
+$("#closeButton").css("display","block");
+}
+function hideSearchBox(){
+$("#searchBox").css("display","none");
+$("#segment").css("display","block");
+$("#searchButton").css("display","block");
+$("#closeButton").css("display","none");
+}
+</script>
+<ons-page ng-controller="userController">
+  <!-- <ons-toolbar fixed-style >
+
+  <div class="center">Danh sách nhân viên</div>
+  </ons-toolbar> -->
+  <!-- <ons-toolbar fixed-style>
+
+    <div class="center" style="width:100%">
+      <input type="search" class="search-input"
+      style="width: 96%; margin: 6px auto 6px auto;"
+      placeholder="Tìm kiếm" ng-model="searchText">
+    </div>
+
+  </ons-toolbar> -->
+<ons-toolbar>
+  <div class="center" style="align:center;width:70%;">
+    <input id="searchBox" type="search" class="search-input"
+    style="width: 96%; margin: 6px auto 6px auto;display:none"
+    placeholder="Tìm kiếm" ng-model="searchText">
+    <div id="segment" style="display:block">
+  Danh sách nhân viên
+</div>
+  </div>
+  <div class="left" style="width:15%" >
+   
+</div>
+<div class="right"  style="width:15%">
+  <ons-toolbar-button id="searchButton" style="display:block">
+    <ons-icon icon="ion-search" fixed-width="false"
+    style="font-size: 26px; vertical-align: -4px;"
+    onclick="showSearchBox()"></ons-icon>
+
+  </ons-icon>
+</ons-toolbar-button>
+<ons-toolbar-button id="closeButton" style="display:none">
+  <ons-icon icon="ion-close" fixed-width="false"
+  style="font-size: 26px; vertical-align: -4px;"
+  onclick="hideSearchBox()">
+</ons-icon>
+</ons-toolbar-button>
+</div>
+</ons-toolbar>
+
+<ons-page>
+  <!-- <ons-toolbar fixed-style>
+
+    <div class="center" style="width:100%">
+      <input type="search" class="search-input"
+      style="width: 96%; margin: 6px auto 6px auto;"
+      placeholder="Tìm kiếm" ng-model="searchText">
+    </div>
+
+  </ons-toolbar> -->
+
+   <ons-list class="person-list" ng-repeat="user in listUsers | filter:searchText">
+     <ons-list-item modifier="chevron" class="list-item-container" ng-click="detailUser(user)">
+      <ons-row>
+        <div class="list-item-left">
+          <img src="{{user.avatar}}" style=" margin-top: 10px; " class="avator" onerror="imgError(this);">
+        </div>
+        <div class="list-item-right">
+          <div class="list-item-content">
+            <span class="name">{{user.Username}}</span><br/>
+            <span class="lucent"> <ons-icon icon="fa-phone"></ons-icon>  {{user.Phone}}</span><br/>
+            <span class="desc">{{user.Email}}</span>
+            <br/>
+            
+            <span class="lucent" style=" font-size: 12px; "> {{user.RoleName}}</span>
+          </div>
+         </div>
+        </ons-row>
+      </ons-list-item>
+   </ons-list>
+ </ons-page>
+
+</ons-page>

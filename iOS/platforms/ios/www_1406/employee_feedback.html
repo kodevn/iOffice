@@ -1,0 +1,50 @@
+<ons-page ng-controller="projectManagementController" data-ng-init="initFeedbackDetails()">
+  <ons-toolbar fixed-style>
+  <div class="left">
+    <span class="toolbar-button--quiet " ng-click="$root.ons.findParentComponentUntil('ons-navigator', $event).popPage()" style="height: 44px; line-height: 0; padding: 0 10px 0 0; position: relative;">
+      <i class="ion-ios7-arrow-back ons-back-button__icon" style="vertical-align: top; background-color: transparent; height: 44px; line-height: 44px; font-size: 36px; margin-left: 8px; margin-right: 2px; width: 16px; display: inline-block; padding-top: 1px;"></i><span style="vertical-align: top; display: inline-block; line-height: 44px; height: 44px;" class="back-button__label"><span class="ng-scope">
+      Back
+    </span></span>
+  </span>
+  </div>
+  <div class="center">
+      
+     Feedback
+  </div>   
+  </ons-toolbar>
+  
+  <ons-list class="plan-list">
+
+    <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item class="to-wrapper">
+          <ons-row>
+            <ons-col width="52px">
+              <img src="{{feedBackEmployeeDetail.avatar}}" width="42" class="to-image" onerror="imgError(this);">
+            </ons-col>
+            <ons-col>
+              <div class="to-name">{{feedBackEmployeeDetail.Username}}</div>
+              <div class="to-email">{{feedBackEmployeeDetail.Email}}</div>
+            </ons-col>
+          </ons-row>
+        </ons-list-item>
+        
+
+        <ons-list-item style="height: 70px;">
+          <textarea class="textarea textarea--transparent" ng-model="message.data" id="message_data" placeholder="Nhận xét nhân viên" style="width: 100%;"></textarea>
+        </ons-list-item>
+
+      
+      </ons-list>
+
+      <div style="padding: 10px 9px">
+        <ons-button modifier="large" style="margin: 0 auto;" data-ng-click="sendCommentEmployee(message, feedBackEmployeeDetail)">
+          Lưu
+        </ons-button>
+      </div>
+
+      <div style="padding: 10px; font-size: 12px;" ng-bind-html="lastcomment.comment">     
+      </div>      
+
+  </ons-list>
+
+</ons-page>

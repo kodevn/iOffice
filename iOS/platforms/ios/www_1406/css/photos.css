@@ -1,0 +1,30 @@
+.photos-list-item-container {
+line-height: 1;
+padding: 15px 0px 15px 15px;
+}
+
+.photos-thumbnail {
+width: 80px;
+height: 80px;
+border-radius: 4px;
+-webkit-border-radius: 4px;
+}
+
+.photos-name {
+font-weight: 500;
+line-height: 16px;
+font-size: 14px;
+margin-bottom: 6px;
+}
+
+.photos-location {
+font-size: 14px;
+opacity: 0.4;
+margin-bottom: 6px;
+}
+
+.photos-desc {
+line-height: 1.2;
+font-size: 13px;
+word-wrap: break-word;
+}

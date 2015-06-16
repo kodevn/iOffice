@@ -1,0 +1,55 @@
+<ons-page ng-controller="userDetailController">
+  <ons-toolbar fixed-style >
+  <div class="left">
+   <ons-back-button>Back</ons-back-button>
+  </div>
+  <div class="center">{{detailUser.Username}}</div>
+  </ons-toolbar>
+
+
+    <ons-row class="profile-wrapper">
+        <ons-col width="60px" class="profile-image-wrapper">
+          <img src="{{detailUser.avatar}}" class="profile-image" onerror="imgError(this);">
+        </ons-col>
+
+        <ons-col>
+          <div class="profile-email">{{detailUser.Email}}</div>
+          <div class="profile-email"><ons-icon icon="fa-phone"></ons-icon>  {{detailUser.Phone}}</div>
+          <hr/>
+          <div ng-repeat="role in userRoles">
+            <div class="profile-email">{{role.Name}}</div>
+          </div>
+        </ons-col>
+
+      </ons-row>
+
+     
+      
+ <ons-list class="person-list" ng-repeat="data in userAssignProject ">
+                <ons-list-item data-ng-click="gotoFeedbackDetails(data.projectId)" class="person-item">
+                <ons-row>
+                     <ons-col width="50px">
+                  <img src="{{photoServer}}{{data.projectId}}.jpg" onerror="imgProjectError(this);" class="person-image" >
+                  </ons-col>
+                  <ons-col>
+                    <header>
+                      <span class="item-title">
+                        <b>
+                          {{data.ProjectName}}
+                        </b>
+                    
+                      </span>
+                    </header>
+                    <p ng-bind-html-unsafe='data.Comment' class="item-desc">
+                      {{ data.Comment | limitTo: 150 }}{{data.Comment.length >
+                        0 ?
+                        '' : 'chưa có đánh giá'}}
+                      </p>
+                    </ons-col>
+                  </ons-row>
+                </ons-list-item>
+              </ons-list>
+
+    <div ng-show="!userAssignProject.length" style=" padding: 10px; ">Không có dự án</div>
+      <br/>
+</ons-page>
